@@ -1,0 +1,25 @@
+{
+    "name": "auto-gform",
+    "version": "1.0.0",
+    "description": "Automated script for filling google forms with puppeteer.",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "keywords": [
+        "puppeteer",
+        "automation",
+        "google-forms",
+        "gform",
+        "form-submission",
+        "form-automation"
+    ],
+    "type": "module",
+    "author": "abdul riyaz",
+    "license": "MIT",
+    "dependencies": {
+        "@faker-js/faker": "^6.0.0-alpha.6",
+        "form-urlencoded": "^6.0.6",
+        "node-fetch": "^3.2.0"
+    }
+}
