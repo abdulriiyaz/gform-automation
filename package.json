@@ -1,7 +1,7 @@
 {
     "name": "auto-gform",
     "version": "1.0.0",
-    "description": "Automated script for filling google forms with puppeteer.",
+    "description": "Automated script for filling google forms with nodejs.",
     "main": "app.js",
     "scripts": {
         "start": "node app.js"
