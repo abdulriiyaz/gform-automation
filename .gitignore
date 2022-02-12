@@ -1,3 +1,8 @@
+# Test files
+formFields.txt
+testFields.txt
+node_modules
+
 # Logs
 logs
 *.log
