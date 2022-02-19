@@ -1,5 +1,5 @@
-{
-    "names": [
+
+    const names = [
         "barjraj\t",
         "ramdin verma\t",
         "sharat chandran\t",
@@ -150,4 +150,5 @@
         "shafibul\t",
         "lalit kathuriya"
     ]
-}
+
+export {names}

@@ -1,59 +1,65 @@
-import { faker } from "@faker-js/faker";
+//import { faker } from "@faker-js/faker";
 import formencoded from "form-urlencoded";
 import fetch from "node-fetch";
+//import names indian-names.js
+import {names} from "./indian-names.js";
 
 //Form submit endpoint
 const googleFormSubmitEndpoint =
-    "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfilRIzdtwT3hur3il6ZJxxpZZs3lQ8usVO4aOTl6GT2k7OtQ/formResponse";
+    "https://docs.google.com/forms/d/e/1FAIpQLSfpvIIesA3SONQ2GMqWo0fNZT0a9Jv7EPj8XKsGt28mSrJLww/formResponse";
 
 //to keep track of current method ID
-let count = 0;
+let count = 1;
 const Options = ["No", "Yes"];
 const ageGroupOptions = [
     "18 to 25",
     "26 to 35",
-    "36 to 45",
-    "46 to 55",
-    "56 to 65",
-    "66 to 75",
-    "76 to 85",
-    "86 to 95",
-    "96 to 105",
 ];
 
+const ages = ["18","19","20","21","22","23","24","25"];
+
+const carMovies = ["Fast and Furious", "James bond", "Race", "Dhoom", "Dhoom 3","Fast and Furious 2", "Ford V Ferrari"];
+
+//import indian-name.json
+
+let start = true;
+
 async function postForm() {
-    let name = faker.name.findName(); //generate random name
+ //get random name from names array
+
+ if(start){
+ const name = names[Math.floor(Math.random() * names.length)];
     let content = {
-        "entry.453677499": name,
-        "entry.471813896": faker.datatype.number(), //generate random number
-        "entry.1785146000": faker.address.city(), //generate random city
-        "entry.1778176075": faker.music.genre(), //generate random genre
-        "entry.317118090": Options[Math.floor(Math.random() * Options.length)], //generate random option
-        "entry.1092892068": Options[Math.floor(Math.random() * Options.length)],
-        "entry.1197490236": Options[Math.floor(Math.random() * Options.length)],
-        "entry.1097751012": Options[Math.floor(Math.random() * Options.length)],
-        "entry.997810604": Options[Math.floor(Math.random() * Options.length)],
-        "entry.2026097136": Options[Math.floor(Math.random() * Options.length)],
-        "entry.1538516791": Options[Math.floor(Math.random() * Options.length)],
-        "entry.156308794": Options[Math.floor(Math.random() * Options.length)],
-        "entry.116378793": Options[Math.floor(Math.random() * Options.length)],
-        "entry.1862040785": Options[Math.floor(Math.random() * Options.length)],
-        "entry.1644307140":
-            ageGroupOptions[Math.floor(Math.random() * ageGroupOptions.length)],
-        "entry.1825693418": Options[Math.floor(Math.random() * Options.length)],
-        "entry.2109347909": Options[Math.floor(Math.random() * Options.length)],
-        "entry.1971585020": Options[Math.floor(Math.random() * Options.length)],
-        "entry.659217429": Options[Math.floor(Math.random() * Options.length)],
-        "entry.416625623": Options[Math.floor(Math.random() * Options.length)],
-        "entry.1335789746": Options[Math.floor(Math.random() * Options.length)],
-        "entry.1942817872": Options[Math.floor(Math.random() * Options.length)],
-        "entry.1418797260": Options[Math.floor(Math.random() * Options.length)],
-        "entry.150646637": Options[Math.floor(Math.random() * Options.length)],
-        "entry.145281019": Options[Math.floor(Math.random() * Options.length)],
-        "entry.444147654": Options[Math.floor(Math.random() * Options.length)],
-        "entry.756023864": Options[Math.floor(Math.random() * Options.length)],
-        "entry.1555559859": Options[Math.floor(Math.random() * Options.length)],
+"entry.999848775": name,
+"entry.1189298264": ages[Math.floor(Math.random() * ages.length)],
+"entry.1493240356": "Mumbai",
+"entry.1726608943": carMovies[Math.floor(Math.random() * carMovies.length)],
+"entry.240759879": Options[Math.floor(Math.random() * Options.length)],
+"entry.1633139715": Options[Math.floor(Math.random() * Options.length)],
+"entry.997610792": Options[Math.floor(Math.random() * Options.length)],
+"entry.187623787": Options[Math.floor(Math.random() * Options.length)],
+"entry.2093484688": Options[Math.floor(Math.random() * Options.length)],
+"entry.212013391": Options[Math.floor(Math.random() * Options.length)],
+"entry.1429566411": Options[Math.floor(Math.random() * Options.length)],
+"entry.799816217": Options[Math.floor(Math.random() * Options.length)],
+"entry.646463261": Options[Math.floor(Math.random() * Options.length)],
+"entry.1662038934": Options[Math.floor(Math.random() * Options.length)],
+"entry.911227992": ageGroupOptions[`${Math.floor(Math.random() * ageGroupOptions.length)}`],
+"entry.1773217526": Options[Math.floor(Math.random() * Options.length)],
+"entry.1595520794": Options[Math.floor(Math.random() * Options.length)],
+"entry.1217283805": Options[Math.floor(Math.random() * Options.length)],
+"entry.1443797093": Options[Math.floor(Math.random() * Options.length)],
+"entry.187697671": Options[Math.floor(Math.random() * Options.length)],
+"entry.724322255": Options[Math.floor(Math.random() * Options.length)],
+"entry.976185566": Options[Math.floor(Math.random() * Options.length)],
+"entry.873330061": Options[Math.floor(Math.random() * Options.length)],
+"entry.117773476": Options[Math.floor(Math.random() * Options.length)],
+"entry.1455095997": Options[Math.floor(Math.random() * Options.length)],
+"entry.373447069": Options[Math.floor(Math.random() * Options.length)],
+"entry.1381825164": Options[Math.floor(Math.random() * Options.length)],
+"entry.158859900": Options[Math.floor(Math.random() * Options.length)]
     };
+
     const response = await fetch(googleFormSubmitEndpoint, {
         method: "post", // `GET` / `POST` / `PUT` / `DELETE`
         body: formencoded(content), //`form-urlencoded`, `json`, `raw`, `blob`, `arraybuffer`, `formdata`
@@ -61,20 +67,36 @@ async function postForm() {
             "Content-Type": "application/x-www-form-urlencoded", //`application/json`, `multipart/form-data`, `text/plain`
         },
     });
-    const data = await response.status;
+    const data = response.status;
 
-    console.log(count); //current method ID
-    console.log(data); //response status (200 = success)
-    console.log(name); //name of the person
-    count += 1; //increment method ID
+    if(data === 200){
+        //console.log(count); //current method ID
+        //console.log(data); //response status (200 = success)
+        console.log(name); //name of the person
+        count += 1;
+    }
+    else{
+        //
+    }; //increment method ID
+ }
+    //return content;
 }
 
 //number of form submits
-let fill = 170;
+// let fill = 170;
 
-for (let i = 0; i < fill; i++) {
-    //post form method, posts the value to the google form POST endpoint
-    postForm();
+// for (let i = 0; i < fill; i++) {
+//     //post form method, posts the value to the google form POST endpoint
+//     postForm();
+// }
+
+let submitCount = 20;
+(async ()=>{
+for (let i = 0; i < submitCount; i++) {
+    await postForm(); 
+    console.log(`Successfully submitted ${count} forms.`);
 }
-console.log(count);
+})();
+
+//console.log(count);
 //postForm();
